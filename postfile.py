@@ -1,5 +1,5 @@
 import requests
 
-with open("README.md", "rb") as f:
-    r = requests.post("http://127.0.0.1:8000/files", files={"README.md": f})
+with open("fastfile.py", "rb") as f:
+    r = requests.post("http://10.46.123.59:8000/files", data={"file": f})
 print(r.text)
