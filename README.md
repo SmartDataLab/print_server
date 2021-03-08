@@ -15,3 +15,21 @@
 
 - 搞懂win-api代码
 - 多线程连接文件，换成restapi接收文件
+
+## quick printer dependency 
+
+```bash
+sudo apt-get update
+sudo apt-get install cups hplip
+sudo usermod -a -G lpadmin pi # pi is your username
+sudo hp-setup -i
+lpstat -t
+lp yourfile
+```
+
+## usage
+
+- port 631 is cups interface
+- uvicorn fastfile:app --reload --host 0.0.0.0
+- http://ip:8000/docs is uvicorn interface for your debugging
+- post a file use form like {"file": file : binary} to ip:8000
