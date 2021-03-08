@@ -33,3 +33,7 @@ lp yourfile
 - uvicorn fastfile:app --reload --host 0.0.0.0
 - http://ip:8000/docs is uvicorn interface for your debugging
 - post a file use form like {"file": file : binary} to ip:8000
+
+## TODO
+
+- only post the final line 
