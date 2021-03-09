@@ -36,9 +36,13 @@ lp yourfile
 
 ## TODO
 
+<<<<<<< HEAD
 - only post the final line 
 - file binary io
 
 307 Temporary Redirect
 
 the final problem is i post to /uploadfile but the real url is /uploadfile/. it search and redirect me to the /uploadfile/. for small file, redirect will not lost, for large file, it will fail
+=======
+- only post the final line 
+>>>>>>> 450ccbf96e67718fb5ccc0db96f7ad50f3bd06bc

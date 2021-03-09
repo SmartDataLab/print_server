@@ -1,14 +1,20 @@
-from fastapi import FastAPI, File, Form, UploadFile
-
+from fastapi import FastAPI, File, UploadFile
+import os
+from sh import lp
+import _thread
+import time
 app = FastAPI()
 
+def print_file(threadName, filename):
+    time.sleep(5)
+    os.system("lp %s"%filename)
+ 
+def write_file(threadName, filename,file):
+    f= open(filename,"wb")
+    f.write(file.file.read())
 
-@app.post("/files/")
-async def create_file(
-    file: bytes = File(...), fileb: UploadFile = File(...), token: str = Form(...)
-):
-    return {
-        "file_size": len(file),
-        "token": token,
-        "fileb_content_type": fileb.content_type,
-    }
+@app.post("/uploadfile/")
+async def create_upload_file(file: UploadFile = File(...)):
+    _thread.start_new_thread(write_file, ("Thread-0", "data/demo.pdf", file, ) )
+    _thread.start_new_thread(print_file, ("Thread-1", "data/demo.pdf", ) )
+    return {"success": "true"}
