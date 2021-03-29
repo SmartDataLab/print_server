@@ -3,7 +3,25 @@ import os
 from sh import lp
 import _thread
 import time
+from fastapi.middleware.cors import CORSMiddleware
+
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8000",
+]
+
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def print_file(threadName, filename):
     time.sleep(5)
