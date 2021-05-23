@@ -33,6 +33,7 @@ def write_file(threadName, filename,file):
     f= open(filename,"wb")
     f.write(file.file.read())
 
+
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile = File(...)):
     _thread.start_new_thread(write_file, ("Thread-0", "/home/pi/dev/print_server/data/demo.pdf", file, ) )
