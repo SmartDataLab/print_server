@@ -1,0 +1,8 @@
+[Unit]
+Description=printer backend api
+
+[Service]
+ExecStart=/bin/bash /home/pi/dev/print_server/auto_printer.sh
+
+[Install]
+WantedBy=default.target
